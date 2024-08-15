@@ -34,7 +34,9 @@ def mnist_noniid(dataset, num_users, bias, rs=np.random.RandomState(SEED)):
     :return:
     """
     dict_users = {}
-    num_shards, num_imgs = num_users * 2, int(len(dataset) / (num_users * 2))       # num_shards=6, num_imgs=10000: divide 60000 total data to (num_users * 2) folds
+    num_shards = shards_per_client*num_users
+    num_imgs =  len(dataset)//num_shards
+    #num_shards, num_imgs = num_users * 2, int(len(dataset) / (num_users * 2))       # num_shards=6, num_imgs=10000: divide 60000 total data to (num_users * 2) folds
     idx_shard = [i for i in range(num_shards)]                                      # idx_shard=[0, 1, 2, 3, 4, 5]
     dict_users = {i: np.array([], dtype='int64') for i in range(num_users)}         # dict_users = {0: array([], dtype=int64), 1: array([], dtype=int64), 2: array([], dtype=int64)}
     idxs = np.arange(num_shards * num_imgs)                                         # idxs = [0 to 59999]
