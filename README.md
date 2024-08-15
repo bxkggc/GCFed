@@ -1,7 +1,9 @@
 Dataset and Network combinations:
 
 --dataset cifar --model vgg16
+
 OR
+
 --dataset fashion_mnist --model cnn
 
 To run our rate allocation, please install matlab.engine
