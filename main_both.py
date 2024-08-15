@@ -181,10 +181,10 @@ if __name__ == '__main__':
         for i in range(24, 31):
             for param in net_glob.features[i].parameters():
                 param.requires_grad = True
-    elif args.model == 'cnn' and (args.dataset == 'mnist' or args.dataset == 'fashion-mnist'):
+    elif args.model == 'cnn' and (args.dataset == 'mnist' or args.dataset == 'fashion_mnist'):
         net_glob = CNNMnist(args=args).to(args.device)
-    elif args.model == 'denser_cnn' and (args.dataset == 'mnist' or args.dataset == 'fashion-mnist'):
-        net_glob = Net(args=args).to(args.device)
+    # elif args.model == 'denser_cnn' and (args.dataset == 'mnist' or args.dataset == 'fashion-mnist'):
+    #     net_glob = Net(args=args).to(args.device)
     elif args.dataset == 'femnist' and args.model == 'cnn':
         net_glob = CNNFemnist(args=args).to(args.device)
     elif args.dataset == 'shakespeare' and args.model == 'lstm':
